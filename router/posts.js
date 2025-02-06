@@ -2,17 +2,19 @@
 const express = require('express');
 const router = express.Router();
 
+// importo le funzioni del controller
+const postController = require('../controllers/postController');
+
 
 //rotta CRUD dei post
 // index
-router.get('/', function (req, res) {
-  res.send('Lista dei blog');
-});
+router.get('/', postController.index); 
 
 // show
-router.get('/:id', function (req, res) {
-  res.send('Dettagli del blog ' + req.params.id);
-});
+router.get('/:id', postController.show); 
+
+// destroy
+router.delete('/:id', postController.destroy);
 
 // store
 router.post('/', function (req, res) {
@@ -29,10 +31,7 @@ router.patch('/:id', function (req, res) {
   res.send('Modifica parziale del blog ' + req.params.id);
 });
 
-// destroy
-router.delete('/:id', function (req, res) {
-  res.send('Eliminazione del blog ' + req.params.id);
-});
+
 
 // esporto router
 module.exports = router;

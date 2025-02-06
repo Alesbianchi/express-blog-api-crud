@@ -3,16 +3,17 @@ const posts = require('../data/posts');
 
 
 function index(req, res) {
-    // res.send('Lista delle pizze');
-    // res.json(menu);
+   res.send('Lista delle pizze');
+   
+    
 }
 
 function destroy(req, res) {
-    // copiamo la logica della store
+    res.send('Eliminazione della pizza ' + req.params.id);
 }
 
 function show(req, res) {
-    // copiamo la logica della store
+    res.send('Dettagli della pizza ' + req.params.id);
 }
 
 function update(req, res) {
