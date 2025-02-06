@@ -6,7 +6,7 @@ const port = 3000
 //app.use(express.static('pubblic'));
 
 // importo il file delle rotte
-const postsRouter = require('./routers/posts');
+const postsRouter = require('./router/posts');
 
 
 //definisco la rotta home
