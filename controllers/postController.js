@@ -34,8 +34,22 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-    res.send('Eliminazione del blog ' + req.params.id);
+   // res.send('Eliminazione del blog ' + req.params.id);
+   
+   // recuperiamo l'id dall' URL e trasformiamolo in numero
+   const id = parseInt(req.params.id)
+   // cerchiamo il post tramite id
+   const post = posts.find(post => post.id === id);
+   // cancello la pizza trovata
+   posts.splice(posts.indexOf(post), 1);
+
+   // log di riscontro di check su aggiornamento dati
+   console.log(posts);
+
+   // ritorno la risposta positiva di avvenuta cancellazione
+   res.sendStatus(204);
 }
+    
 
 function update(req, res) {
     // copiamo la logica dell'update
