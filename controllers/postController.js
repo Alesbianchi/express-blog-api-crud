@@ -3,8 +3,20 @@ const posts = require('../data/posts');
 
 
 function index(req, res) {
-   res.send('Lista delle pizze');
-   
+   //res.send('Lista delle pizze');
+   //Inizialmente, il blog filtrato corrisponde a quello originale
+   let filteredPost = posts;
+
+   // Se la richiesta contiene un filtro, allora filtriamo il blog
+   if (req.query.ingredient) {
+       filteredPost = post.filter(
+           post => post.list.includes(req.query.list)
+       );
+   }
+
+   // restituiamo la variabile filteredPost
+   // potrebbe essere stata filtrata o contenere il blog originale
+   res.json(filteredPost);
     
 }
 
