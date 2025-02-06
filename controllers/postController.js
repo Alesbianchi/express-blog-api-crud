@@ -3,7 +3,7 @@ const posts = require('../data/posts');
 
 
 function index(req, res) {
-   //res.send('Lista delle pizze');
+   //res.send('Lista dei blog');
    //Inizialmente, il blog filtrato corrisponde a quello originale
    let filteredPost = posts;
 
@@ -20,12 +20,21 @@ function index(req, res) {
     
 }
 
-function destroy(req, res) {
-    res.send('Eliminazione della pizza ' + req.params.id);
-}
 
 function show(req, res) {
-    res.send('Dettagli della pizza ' + req.params.id);
+    //res.send('Dettagli del blog ' + req.params.id);
+    // recuperiamo l'id dall' URL e trasformiamolo in numero
+    const id = parseInt(req.params.id)
+
+    // cerchiamo il post tramite id
+    const post = posts.find(post => post.id === id);
+ 
+    // Restituiamolo sotto forma di JSON   
+    res.json(post);
+}
+
+function destroy(req, res) {
+    res.send('Eliminazione del blog ' + req.params.id);
 }
 
 function update(req, res) {
