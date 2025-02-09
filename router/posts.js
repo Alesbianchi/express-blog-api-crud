@@ -17,9 +17,9 @@ router.get('/:id', postController.show);
 router.delete('/:id', postController.destroy);
 
 // store
-router.post('/', function (req, res) {
-  res.send('Creazione nuovo blog');
-});
+router.post('/', postController.store);
+  
+
 
 // update
 router.put('/:id', function (req, res) {

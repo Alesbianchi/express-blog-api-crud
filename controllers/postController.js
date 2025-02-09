@@ -58,6 +58,9 @@ function update(req, res) {
 
 function store(req, res) {
     // copiamo la logica della store
+    res.send('Creazione nuovo blog');
+    console.log('prova nuovo blog');
+    
 }
 
 function update(req, res) {
