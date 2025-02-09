@@ -58,8 +58,26 @@ function update(req, res) {
 
 function store(req, res) {
     // copiamo la logica della store
-    res.send('Creazione nuovo blog');
-    console.log('prova nuovo blog');
+    //console.log(req.body);
+    //res.send('Creazione nuovo blog');
+    const newId = posts[posts.length - 1].id + 1;
+    // Creo un nuovo oggetto 
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,   
+        tags: req.body.tags
+    }
+    // Aggiungo il nuovo post
+    posts.push(newPost);
+
+    // stampo in console
+    console.log(posts);
+
+    // restituisco lo status corretto 
+    res.status(201);
+    res.json(newPost);
+    
     
 }
 
@@ -68,4 +86,4 @@ function update(req, res) {
 }
 
 // esportiamo tutto
-module.exports = { index, show, store, update, destroy }
+module.exports = { index, show, store, update, destroy,}
