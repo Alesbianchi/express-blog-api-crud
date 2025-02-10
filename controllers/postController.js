@@ -82,10 +82,39 @@ function store(req, res) {
 }
 
 function update(req, res) {
-    // copiamo la logica dell'update
-    console.log(req.body);
-    res.send('modifica vecchio blog');
+    // copio la logica dell'update
+    //console.log(req.body);
+    //res.send('modifica vecchio blog');
+    // recupero l'id dall' URL e lo trasformo in numero
+    const id = parseInt(req.params.id)
+
+    // cerco il post tramite id
+    const post = posts.find(post => post.id === id);
+ 
+    if(!post) {
+        //restituisco stato di errore 404
+        res.status(404);
+
+        //restituisco messaggio di errore in json
+        return res.json({
+            error: "Not found",
+            message: "post non trovato"
+        })
+    }
+
+    //ora modifico i dati del post se trovato
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    //stampo il risultato in console
+    console.log(posts);
+
+    //ritorno il post modificato in formato json
+    res.json(posts);
+    
 }
 
 // esportiamo tutto
-module.exports = { index, show, store, update, destroy,}
+module.exports = { index, show, store, update, destroy}
