@@ -22,9 +22,7 @@ router.post('/', postController.store);
 
 
 // update
-router.put('/:id', function (req, res) {
-  res.send('Modifica integrale del blog ' + req.params.id);
-});
+router.put('/:id', postController.update);
 
 // modify
 router.patch('/:id', function (req, res) {

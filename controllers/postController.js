@@ -83,6 +83,8 @@ function store(req, res) {
 
 function update(req, res) {
     // copiamo la logica dell'update
+    console.log(req.body);
+    res.send('modifica vecchio blog');
 }
 
 // esportiamo tutto
